@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({ pageNumber, info, setPageNumber }) => {
-  // let pageChange = (data) => {
-  //   updatePageNumber(data.selected + 1);
-  // }; 
+const Pagination = ({ pageNumber, info, updatePageNumber }) => {
+  let pageChange = (data) => {
+    updatePageNumber(data.selected + 1);
+  };
 
   const [width, setWidth] = useState(window.innerWidth);
-
   const updateDimensions = () => {
     setWidth(window.innerWidth);
   };
@@ -20,16 +19,14 @@ const Pagination = ({ pageNumber, info, setPageNumber }) => {
     <>
       <style jsx>
         {`
-         .btn.disabled {
-          background-color: white !important;
-          text-decoration: none !important;
-         }
-         .btn-primary {
-          background-color: white !important;
-          text-decoration: none !important;
-         }
-        
-        
+         .btn.disabled a {
+          color:#fff !important;
+          text-decoration: none;
+        }
+        .btn-primary a {
+          color:#fff !important;
+          text-decoration: none;
+        }
           @media (max-width: 768px) {
             .pagination {
               font-size: 12px;
@@ -57,9 +54,7 @@ const Pagination = ({ pageNumber, info, setPageNumber }) => {
         marginPagesDisplayed={width < 576 ? 1 : 2}
         pageRangeDisplayed={width < 576 ? 1 : 2}
         pageCount={info?.pages}
-        onPageChange={(data)=>{
-          setPageNumber(data.selected +1)
-        }}
+        onPageChange={pageChange}
         pageClassName="page-item"
         pageLinkClassName="page-link"
       />
