@@ -13,13 +13,16 @@ import Episodes from "./Pages/Episodes";
 import Location from "./Pages/Location";
 import CardDetails from "./components/Card/CardDetails";
 
+// Main function component
 function App() {
   return (
     <Router>
       <div className="App">
+        {/* This Navbar works like a templete */}
         <Navbar />
       </div>
       <Routes>
+        {/* Linked with home page and other pages */}
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<CardDetails />} />
 
@@ -33,6 +36,7 @@ function App() {
   );
 }
 
+// This is a page
 const Home = () => {
   let [pageNumber, updatePageNumber] = useState(1);
   let [status, updateStatus] = useState("");
@@ -50,6 +54,7 @@ const Home = () => {
       updateFetchedData(data);
     })();
   }, [api]);
+
   return (
     <div className="App">
       <h1 className="text-center mb-3">Characters</h1>

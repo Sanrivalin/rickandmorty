@@ -1,4 +1,5 @@
 import React from "react";
+// Navlink to know where we are "active class name"
 import { NavLink, Link } from "react-router-dom";
 import "../../App.scss";
 
